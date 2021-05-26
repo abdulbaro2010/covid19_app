@@ -8,29 +8,28 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class StatsScreen extends StatefulWidget {
-  
-  
   @override
-  _StatsScreenState createState() => _StatsScreenState();
+  _StatsScreenState createState() => new _StatsScreenState();
 }
 
 class _StatsScreenState extends State<StatsScreen> {
-  APIResponseModel apiResponseModel;
+  APIResponseModel _apiResponseModel;
 
   @override
- void getDataFromAPI() async {
-    setState(() {
-      
-    });
+  void initState() {
+    super.initState();
+    getDataFromAPI();
+  }
+
+  getDataFromAPI() async {
     const String API_URL = "https://corona.lmao.ninja/v2/all";
     var response = await http.get(Uri.parse(API_URL));
     var parsedJson = await json.decode(response.body);
     setState(() {
-      apiResponseModel = APIResponseModel.fromJson(parsedJson);
-     
+      this._apiResponseModel = APIResponseModel.fromJson(parsedJson);
     });
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,20 +41,19 @@ class _StatsScreenState extends State<StatsScreen> {
           _buildHeader(),
           _buildRegionTabBar(),
           _buildStatsTabBar(),
-          
-            SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+          SliverPadding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
             sliver: SliverToBoxAdapter(
-            child: StatsGrid(),
+              child: StatsGrid(_apiResponseModel),
             ),
           ),
         ],
-        
       ),
     );
   }
 
-  SliverPadding _buildHeader(){
+  SliverPadding _buildHeader() {
     return SliverPadding(
       padding: const EdgeInsets.all(20.0),
       sliver: SliverToBoxAdapter(
@@ -102,7 +100,7 @@ class _StatsScreenState extends State<StatsScreen> {
     );
   }
 
-  SliverPadding _buildStatsTabBar(){
+  SliverPadding _buildStatsTabBar() {
     return SliverPadding(
       padding: const EdgeInsets.all(20.0),
       sliver: SliverToBoxAdapter(
