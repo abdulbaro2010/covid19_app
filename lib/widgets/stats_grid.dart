@@ -2,14 +2,14 @@ import 'package:covid19_ui/models/network.dart';
 import 'package:flutter/material.dart';
 
 class StatsGrid extends StatelessWidget {
-  APIResponseModel _apiResponseModel;
+  final APIResponseModel _apiResponseModel;
 
   StatsGrid(this._apiResponseModel);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.25,
+      height: MediaQuery.of(context).size.height * 0.6,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
