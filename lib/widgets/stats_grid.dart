@@ -9,7 +9,7 @@ class StatsGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.6,
+      height: MediaQuery.of(context).size.height * 0.9,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -21,7 +21,7 @@ class StatsGrid extends StatelessWidget {
                     Colors.orange),
                 _buildStatCard(
                     "Total Deaths : ${_apiResponseModel?.deaths ?? 0} \n",
-                    Colors.orange),
+                    Colors.red),
               ],
             ),
           ),
@@ -30,10 +30,10 @@ class StatsGrid extends StatelessWidget {
               children: [
                 _buildStatCard(
                     "Today's Deaths : ${_apiResponseModel?.todayDeaths ?? 0}\n",
-                    Colors.orange),
+                    Colors.red),
                 _buildStatCard(
                     "Total Recovered : ${_apiResponseModel?.recovered ?? 0}\n",
-                    Colors.orange),
+                    Colors.pink),
               ],
             ),
           ),
@@ -42,10 +42,10 @@ class StatsGrid extends StatelessWidget {
               children: [
                 _buildStatCard(
                     "Active Cases : ${_apiResponseModel?.active ?? 0}\n",
-                    Colors.orange),
+                    Colors.green),
                 _buildStatCard(
                     "Critical Cases : ${_apiResponseModel?.critical ?? 0}\n",
-                    Colors.orange),
+                    Colors.purple),
               ],
             ),
           ),
@@ -54,10 +54,10 @@ class StatsGrid extends StatelessWidget {
               children: [
                 _buildStatCard(
                     "Cases per million: ${_apiResponseModel?.casesPerOneMillion ?? 0}\n",
-                    Colors.orange),
+                    Colors.brown),
                 _buildStatCard(
                     "Deaths per million: ${_apiResponseModel?.deathsPerOneMillion ?? 0}\n",
-                    Colors.orange),
+                    Colors.indigo),
               ],
             ),
           ),
@@ -66,10 +66,10 @@ class StatsGrid extends StatelessWidget {
               children: [
                 _buildStatCard(
                     "Total Tests Done: ${_apiResponseModel?.tests ?? 0}\n",
-                    Colors.orange),
+                    Colors.teal),
                 _buildStatCard(
                     "Tests per million: ${_apiResponseModel?.testsPerOneMillion ?? 0}\n",
-                    Colors.orange),
+                    Colors.cyan),
               ],
             ),
           ),
@@ -78,7 +78,7 @@ class StatsGrid extends StatelessWidget {
               children: [
                 _buildStatCard(
                     "Affected countires : ${_apiResponseModel?.affectedCountries ?? 0}\n",
-                    Colors.orange),
+                    Colors.grey),
               ],
             ),
           ),
@@ -102,7 +102,7 @@ class StatsGrid extends StatelessWidget {
             Text(
               title,
               style: const TextStyle(
-                fontSize: 15.0,
+                fontSize: 19.0,
                 fontWeight: FontWeight.w600,
                 color: Colors.white,
               ),
